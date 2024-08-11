@@ -1,63 +1,89 @@
-<!doctype html>
-<html>
-	<head>
-		<title>酒の本数を決める</title>
-	</head>
-	<body>
-        <p>ギフトコードは {{ amount }} 円分です</p>
-        <br>
-		<p>ガチャに含めるお酒の本数を選んでください</p>
-		<!-- Flashメッセージの表示 -->
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                <ul class="flashes">
-                    {% for category, message in messages %}
-                        <li class="{{ category }}">{{ message|safe }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
-
-        <form method="POST" action="{{ url_for('choose_sakenum') }}">
-			<label for="sakenum">酒の本数を入力してください</label>
-			<input type="number" id="sakenum" name="sakenum" min="0" required>
-			<br>
-            <p>お土産に含めるお酒の種類を選んでください</p>
-            <label>
-                <input type="checkbox" name="jpsake" checked>
-                日本酒
-            </label><br>
-            <label>
-                <input type="checkbox" name="syochu" checked>
-                焼酎
-            </label><br>
-            <label>
-                <input type="checkbox" name="fruit" checked>
-                果実酒
-            </label><br>
-            <label>
-                <input type="checkbox" name="ume_liq" checked>
-                梅酒
-            </label><br>
-            <label>
-                <input type="checkbox" name="liq" checked>
-                リキュール
-            </label><br>
-            <label>
-                <input type="checkbox" name="waine" checked>
-                ワイン
-            </label><br>
-            <label>
-                <input type="checkbox" name="craft_beer" checked>
-                クラフトビール
-            </label><br>
-            <label>
-                <input type="checkbox" name="other" checked>
-                その他
-            </label><br>
-            <input type="submit" value="決定">
-        </form>
-		<br>
-        <a href="{{ url_for('home') }}">最初に戻る</a>
-	</body>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホームページ</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="/static/img/logo.png" alt="ロゴ" class="logo-img">
+            </a>
+        </div>
+        <input id="drawer_input" class="drawer_hidden" type="checkbox">
+        <label for="drawer_input" class="drawer_open"><span></span></label>
+        <nav class="nav_content">
+            <ul>
+                <!-- <li class="nav_item"><a href="#">シミュレータ</a></li> -->
+                <li class="nav_item"><a href="{{ url_for('simulator') }}">シミュレータ</a></li>
+                <li class="nav_item"><a href="{{ url_for('make_gift') }}">ギフトを購入する</a></li>
+                <li class="nav_item"><a href="{{ url_for('use_gift') }}">ギフトコードを入力する</a></li>
+				<li class="nav_item"><a href="#">管理者画面🤫</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="main_visual">
+        <img src="/static/img/main_visual.png" alt="メインビジュアル" width="390"/>
+    </div>
+    <div class="container">
+        <div class="info_gacha">
+            <h1>ギフトコードは {{ amount }} 円分です</h1>
+            <br>
+            <p>ガチャに含めるお酒の本数を選んでください</p>
+            <form method="POST" action="{{ url_for('choose_sakenum') }}">
+                <div class="form-group">
+                    <label for="sakenum" style=" font-weight: bold;">お酒の本数：</label>
+                    <input type="number" id="sakenum" name="sakenum" min="0" required>
+                </div>
+                <br>
+                <label for="sake_type" style=" font-weight: bold;">お酒の種類を選んでください：</label>
+                <div for="checkboxs">
+                    <div class="checkbox">
+                        <input type="checkbox" name="jpsake" checked>
+                        日本酒
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="syochu" checked>
+                        焼酎
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="fruit" checked>
+                        果実酒
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="ume_liq" checked>
+                        梅酒
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="liq" checked>
+                        リキュール
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="waine" checked>
+                        ワイン
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="craft_beer" checked>
+                        クラフトビール
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="other" checked>
+                        その他
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="button">長押し<br>してね</button>
+                    <div class="rectangle"></div>
+                </div>
+            </form>
+        <!-- <br>
+        <a href="{{ url_for('home') }}">最初に戻る</a> -->
+        </div>
+    </div>
+</body>
 </html>

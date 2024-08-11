@@ -115,7 +115,7 @@ def choose_sakenum():
         print("sakelist : ",sakelist)
         session["sakelist"] = sakelist
         session["sakenum"] = sakenum
-        return redirect(url_for("gacha_home"))
+        return redirect(url_for("result_gacha"))
     return render_template("choose_sakenum.html", amount=amount)
 
 # ガチャのホーム画面
@@ -126,9 +126,9 @@ def gacha_home():
     # print(f"Budget on gacha_home: {budget}, Sakenum: {sakenum}")
     return render_template("gacha_home.html", budget=budget, sakenum=sakenum)
 
-# ガチャの実行とその結果の表示
-@app.route("/gacha_result", methods=["GET", "POST"])
-def gacha():
+# ガチャの実行とその結果の表示（本番用）
+@app.route("/result_gacha", methods=["GET", "POST"])
+def result_gacha():
     budget = int(session.get("amount"))
     oribudget = budget
     sakenum = int(session.get("sakenum"))
@@ -205,7 +205,7 @@ def gacha():
         # print(budget)
 
         # ページに返す
-        return render_template("gacha_result.html", sakes=selected_sakes, otsumamies=selected_otsumamies, money=money)
+        return render_template("result_gacha.html", sakes=selected_sakes, otsumamies=selected_otsumamies, money=money)
 
 
 # ガチャの実行とその結果の表示(シミュレーション用)
