@@ -133,19 +133,38 @@ def result():
         print("お酒の合計購入金額 = ", spend4sake) # ok
         print("remained budget = ", budget) # ok
 
-        # 残りの予算でおつまみを最大化する(重複あり)
-        dp = [0] * (budget + 1)
-        count = [[] for _ in range(budget + 1)]
+        # # 残りの予算でおつまみを最大化する(重複あり)
+        # dp = [0] * (budget + 1)
+        # count = [[] for _ in range(budget + 1)]
         
-        for otsumami in otsumamies:
-            otsumami_name, otsumami_price = otsumami
-            for x in range(otsumami_price, budget + 1):
-                if dp[x - otsumami_price] + otsumami_price > dp[x]:
-                    dp[x] = dp[x - otsumami_price] + otsumami_price
-                    count[x] = count[x - otsumami_price] + [(otsumami_name, otsumami_price)]
+        # for otsumami in otsumamies:
+        #     otsumami_name, otsumami_price = otsumami
+        #     for x in range(otsumami_price, budget + 1):
+        #         if dp[x - otsumami_price] + otsumami_price > dp[x]:
+        #             dp[x] = dp[x - otsumami_price] + otsumami_price
+        #             count[x] = count[x - otsumami_price] + [(otsumami_name, otsumami_price)]
+
+        # ランダムに選んで，できる限り取り切る
+        selected_otsumamies = []
+        min_price = 100000000000
+        for otsumami in otsumamies: # おみやげ内の最小の金額を調べる
+            price = otsumami[1]
+            if price < min_price:
+                min_price = price
+        print("min_price : ",min_price)
+        while True:
+            print("budget : ",budget)
+            otsumami = random.choice(otsumamies)
+            amount = otsumami[1]
+            if budget >= amount:
+                budget -= amount
+                selected_otsumamies.append(otsumami)
+                if budget < min_price:
+                    break
+        print("selected_otsumamies : ", selected_otsumamies)
 
         # 結果を表示するためのコード
-        selected_otsumamies = count[budget]
+        # selected_otsumamies = count[budget]
         print("選んだお酒:", selected_sakes)
         print("選んだおつまみ:", selected_otsumamies)
         spend4otsumami = sum(otsumami[1] for otsumami in selected_otsumamies)
