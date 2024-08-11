@@ -1,7 +1,40 @@
-
 .checkbox {
     font-size: 28px;
     color: #e6372b;
+}
+
+input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    transform: scale(1.5);
+    transform-origin: center;
+    accent-color: #e6372b;
+}
+
+.checkbox label {
+    position: relative;
+    cursor: pointer;
+    font-size: 28px;
+    color: #e6372b;
+}
+
+.checkbox label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #e6372b; /* ボーダーの色 */
+    background-color: #ffffff; /* 背景色 */
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.checkbox input[type="checkbox"]:checked + label::before {
+    background-color: #e6372b; /* チェックされているときの背景色 */
+    content: '✔'; /* チェックマーク */
+    color: #E9DFB5; /* チェックマークの色 */
+    text-align: center;
+    line-height: 24px;
 }
 
 
