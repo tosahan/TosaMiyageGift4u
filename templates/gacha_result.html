@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+		<title>ガチャ 結果画面</title>
+	</head>
+	<body>
+		<h1>ガチャ  結果</h1>
+		<br>
+		{% for x in sakes %}
+			<p>{{ x[0] }} : {{ x[1] }}</p>
+		{% endfor %}
+        <p>お酒の合計購入金額 : {{ money[0] }} 円</p>
+        <br>
+        {% for x in otsumamies %}
+			<p>{{ x[0] }} : {{ x[1] }}</p>
+		{% endfor %}
+        <p>おつまみの合計購入金額 : {{ money[1] }} 円</p>
+        <br>
+        <p>合計購入金額 : {{ money[2] }} 円</p>
+        <br>
+        <p>予算の残り : {{ money[3] }} 円</p>
+        <br>
+        <a href="{{ url_for('home') }}">最初に戻る</a>
+	</body>
+</html>

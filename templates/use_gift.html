@@ -32,12 +32,24 @@
     </div>
     <div class="container">
         <div class="info_gacha">
-            <div class="text1">
-                <h1>高知お土産ガチャとは？</h1>
-            </div>
-            <div class="text2">
-                <p>高知お土産ガチャは、軍資金とお酒の本数を入力するだけでランダムにお土産を選べるツールです。</p>
-            </div>
+            <!-- Flashメッセージの表示 -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+        <h1>ギフトコードの入力</h1>
+        <br>
+        <form action="{{ url_for('use_gift') }}" method="POST">
+            <input type="text" name="giftcode" placeholder="ギフトコードを入力" required/>
+            <input type="submit" value="決定"/>
+        </form>
+        <!-- <br>
+        <a href="{{ url_for('home') }}">最初に戻る</a> -->
         </div>
     </div>
 </body>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+	<head>
+		<title>酒の本数を決める</title>
+	</head>
+	<body>
+        <p>ギフトコードは {{ amount }} 円分です</p>
+        <br>
+		<p>ガチャに含めるお酒の本数を選んでください</p>
+		<!-- Flashメッセージの表示 -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message|safe }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('choose_sakenum') }}">
+			<label for="sakenum">酒の本数を入力してください</label>
+			<input type="number" id="sakenum" name="sakenum" min="0" required>
+			<br>
+            <p>お土産に含めるお酒の種類を選んでください</p>
+            <label>
+                <input type="checkbox" name="jpsake" checked>
+                日本酒
+            </label><br>
+            <label>
+                <input type="checkbox" name="syochu" checked>
+                焼酎
+            </label><br>
+            <label>
+                <input type="checkbox" name="fruit" checked>
+                果実酒
+            </label><br>
+            <label>
+                <input type="checkbox" name="ume_liq" checked>
+                梅酒
+            </label><br>
+            <label>
+                <input type="checkbox" name="liq" checked>
+                リキュール
+            </label><br>
+            <label>
+                <input type="checkbox" name="waine" checked>
+                ワイン
+            </label><br>
+            <label>
+                <input type="checkbox" name="craft_beer" checked>
+                クラフトビール
+            </label><br>
+            <label>
+                <input type="checkbox" name="other" checked>
+                その他
+            </label><br>
+            <input type="submit" value="決定">
+        </form>
+		<br>
+        <a href="{{ url_for('home') }}">最初に戻る</a>
+	</body>
+</html>
