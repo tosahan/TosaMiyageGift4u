@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+	<head>
+		<title>購入 結果画面</title>
+	</head>
+	<body>
+		<h1>購入結果</h1>
+		<br>
+		<p>{{ gift_amount }} 円のギフト券を購入できました！</p>
+        <br>
+        <p>お買い上げありがとうございます！</p>
+        <br>
+        <p>ギフトコードは {{ giftcode }} です</p>
+        <br>
+        <a href="{{ url_for('index') }}">最初に戻る</a>
+	</body>
+</html>

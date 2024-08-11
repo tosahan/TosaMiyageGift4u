@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+	<head>
+		<title>ギフト券の購入ページ</title>
+	</head>
+	<body>
+        <form method="POST" action="{{ url_for('make_gift') }}">
+			<label for="budget">購入するギフト券の金額を入力してください</label>
+			<input type="number" id="gift_amount" name="gift_amount" min="1" required>
+			<br>
+			<input type="submit" value="決定">
+		</form>
+        <br>
+        <a href="{{ url_for('index') }}">最初に戻る</a>
+	</body>
+</html>

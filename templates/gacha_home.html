@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+	<head>
+		<title>gacha home</title>
+	</head>
+	<body>
+		<h1>高知  お土産ガチャ</h1>
+        <p>予算は {{budget}} 円</p>
+        <p>酒の本数は {{sakenum}} 本</p>
+        <br>
+        <form method="POST" action="{{ url_for('gacha') }}">
+            <input type="hidden" name="budget" value="{{ budget }}">
+            <input type="hidden" name="sakenum" value="{{ sakenum }}">
+            <input type="submit" value="ガチャを実行">
+        </form>
+        <br>
+        <a href="{{ url_for('index') }}">最初に戻る</a>
+        <!-- <h2>Budget: {{ budget }}</h2>
+        <h2>Sakenum: {{ sakenum }}</h2> -->
+	</body>
+</html>

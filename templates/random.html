@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Random Sake</title>
+	</head>
+	<body>
+		<h1>Random sake</h1>
+		{% if sake %}
+			<p>{{ sake.id }} : {{ sake.name}} {{ sake.kinds}} {{ sake.price}}</p>
+		{% else %}
+			<p>No sakes found!</p>
+		{% endif %}
+		<a href="{{ url_for('index') }}">Back to home</a>
+	</body>
+</html>
