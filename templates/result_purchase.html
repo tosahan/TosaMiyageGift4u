@@ -1,17 +1,111 @@
-<!doctype html>
-<html>
-	<head>
-		<title>購入 結果画面</title>
-	</head>
-	<body>
-		<h1>購入結果</h1>
-		<br>
-		<p>{{ gift_amount }} 円のギフト券を購入できました！</p>
-        <br>
-        <p>お買い上げありがとうございます！</p>
-        <br>
-        <p>ギフトコードは {{ giftcode }} です</p>
-        <br>
-        <a href="{{ url_for('index') }}">最初に戻る</a>
-	</body>
+<!-- <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホームページ</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="/static/img/logo.png" alt="ロゴ" class="logo-img">
+            </a>
+        </div>
+        <input id="drawer_input" class="drawer_hidden" type="checkbox">
+        <label for="drawer_input" class="drawer_open"><span></span></label>
+        <nav class="nav_content">
+            <ul>
+                <li class="nav_item"><a href="{{ url_for('simulator') }}">シミュレータ</a></li>
+                <li class="nav_item"><a href="{{ url_for('make_gift') }}">ギフトを購入する</a></li>
+                <li class="nav_item"><a href="#">ギフトコードを入力する</a></li>
+				<li class="nav_item"><a href="#">管理者画面🤫</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="main_visual">
+        <img src="/static/img/main_visual.png" alt="メインビジュアル" width="390"/>
+    </div>
+    <div class="container">
+        <div class="info_gacha">
+            <div class="text1">
+                <h1>購入結果</h1>
+            </div>
+            <div class="text2">
+                <p>{{ gift_amount }} 円のギフト券を購入できました！</p>
+            </div>
+			<div class="text2">
+				<p>お買い上げありがとうございます！</p>
+			</div>
+			<div class="text2">
+				<p>ギフトコードは {{ giftcode }} です</p>
+			</div>
+        </div>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購入結果</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        function copyGiftCode() {
+            var copyText = document.getElementById("giftcodeInput");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+            document.execCommand("copy");
+            alert("ギフトコードがコピーされました: " + copyText.value);
+        }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="/static/img/logo.png" alt="ロゴ" class="logo-img">
+            </a>
+        </div>
+        <input id="drawer_input" class="drawer_hidden" type="checkbox">
+        <label for="drawer_input" class="drawer_open"><span></span></label>
+        <nav class="nav_content">
+            <ul>
+                <li class="nav_item"><a href="{{ url_for('simulator') }}">シミュレータ</a></li>
+                <li class="nav_item"><a href="{{ url_for('make_gift') }}">ギフトを購入する</a></li>
+                <li class="nav_item"><a href="#">ギフトコードを入力する</a></li>
+                <li class="nav_item"><a href="#">管理者画面🤫</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="main_visual">
+        <img src="/static/img/main_visual.png" alt="メインビジュアル" width="390"/>
+    </div>
+    <div class="container">
+        <div class="info_gacha">
+            <div class="text1">
+                <h1>購入結果</h1>
+            </div>
+            <div class="text2">
+                <p>{{ gift_amount }} 円のギフト券を購入できました！</p>
+            </div>
+            <div class="text2">
+                <p>お買い上げありがとうございます！</p>
+            </div>
+            <div class="text2">
+                <p>ギフトコード：
+                    <input type="text" id="giftcodeInput" value="{{ giftcode }}" readonly>
+                    <button onclick="copyGiftCode()">コピー</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
 </html>

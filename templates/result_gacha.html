@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ホームページ</title>
+	<link rel="stylesheet" href="/static/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header class="header">
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="/static/img/logo.png" alt="ロゴ" class="logo-img">
+            </a>
+        </div>
+        <input id="drawer_input" class="drawer_hidden" type="checkbox">
+        <label for="drawer_input" class="drawer_open"><span></span></label>
+        <nav class="nav_content">
+            <ul>
+                <li class="nav_item"><a href="{{ url_for('simulator') }}">シミュレータ</a></li>
+                <li class="nav_item"><a href="{{ url_for('make_gift') }}">ギフトを購入する</a></li>
+                <li class="nav_item"><a href="#">ギフトコードを入力する</a></li>
+				<li class="nav_item"><a href="#">管理者画面🤫</a></li>
+            </ul>
+        </nav>
+    </header>
+
+	<div class="main_visual">
+        <img src="/static/img/gacha_result_img.png" alt="メインビジュアル" width="390"/>
+    </div>
+
+	<div class="container">
+		<div class="result_gacha">
+			<div class="text1">
+                <h1>ガチャ  結果</h1>
+            </div>
+			<br>
+			{% for x in sakes %}
+				<!-- <p class="border-box">{{ x[0] }} : {{ x[1] }}円</p> -->
+				<div class="border-box">
+					<p>{{ x[0] }}</p>
+					<p>{{ x[1] }}円</p>
+				</div>
+			{% endfor %}
+			<div class="text2">
+				<p style="font-weight: bold;">おつまみの合計購入金額 : {{ money[1] }} 円</p>
+			</div>
+			<br>
+			{% for x in otsumamies %}
+				<!-- <p class="border-box">{{ x[0] }} : {{ x[1] }}円</p> -->
+				<div class="border-box">
+					<p>{{ x[0] }}</p>
+					<p>{{ x[1] }}円</p>
+				</div>
+			{% endfor %}
+			<div class="text2">
+				<p style="font-weight: bold;">合計購入金額 : {{ money[2] }} 円</p>
+			</div>
+			<br>
+			<div class="text2">
+				<p style="font-weight: bold;">予算の残り : {{ money[3] }} 円</p>
+			</div>
+			<a href="{{ url_for('home') }}" class="return-button">ホームに戻る</a>
+		</div>
+</body>
+</html>

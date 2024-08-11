@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホームページ</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="/static/img/logo.png" alt="ロゴ" class="logo-img">
+            </a>
+        </div>
+        <input id="drawer_input" class="drawer_hidden" type="checkbox">
+        <label for="drawer_input" class="drawer_open"><span></span></label>
+        <nav class="nav_content">
+            <ul>
+                <li class="nav_item"><a href="{{ url_for('simulator') }}">シミュレータ</a></li>
+                <li class="nav_item"><a href="{{ url_for('make_gift') }}">ギフトを購入する</a></li>
+                <li class="nav_item"><a href="#">ギフトコードを入力する</a></li>
+				<li class="nav_item"><a href="#">管理者画面🤫</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="main_visual">
+        <img src="/static/img/main_visual.png" alt="メインビジュアル" width="390"/>
+    </div>
+    <div class="container">
+        <div class="info_gacha">
+            <div class="text1">
+                <h1>高知お土産ガチャとは？</h1>
+            </div>
+            <div class="text2">
+                <p>高知お土産ガチャは、軍資金とお酒の本数を入力するだけでランダムにお土産を選べるツールです。</p>
+            </div>
+            <form action="{{ url_for('result') }}" method="GET" class="form_gacha" id="gachaForm">
+                <div class="form-group">
+                    <label for="budget" style=" font-weight: bold;">軍資金 (円)：</label>
+                    <input type="number" id="budget" name="budget" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="sakenum" style=" font-weight: bold;">お酒の本数：</label>
+                    <input type="number" id="sakenum" name="sakenum" min="0" required>
+                </div>
+                <br>
+                <label for="sake_type" style=" font-weight: bold;">お酒の種類を選んでください：</label>
+                <div for="checkboxs">
+                    <div class="checkbox">
+                        <input type="checkbox" name="jpsake" checked>
+                        日本酒
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="syochu" checked>
+                        焼酎
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="fruit" checked>
+                        果実酒
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="ume_liq" checked>
+                        梅酒
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="liq" checked>
+                        リキュール
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="waine" checked>
+                        ワイン
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="craft_beer" checked>
+                        クラフトビール
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="other" checked>
+                        その他
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="button">長押し<br>してね</button>
+                    <div class="rectangle"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

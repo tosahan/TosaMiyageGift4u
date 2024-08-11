@@ -1,20 +1,3 @@
-<!-- <!doctype html>
-<html>
-	<head>
-		<title>ギフト券の購入ページ</title>
-	</head>
-	<body>
-        <form method="POST" action="{{ url_for('make_gift') }}">
-			<label for="budget">購入するギフト券の金額を入力してください</label>
-			<input type="number" id="gift_amount" name="gift_amount" min="1" required>
-			<br>
-			<input type="submit" value="決定">
-		</form>
-        <br>
-        <a href="{{ url_for('home') }}">最初に戻る</a>
-	</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -49,18 +32,12 @@
     </div>
     <div class="container">
         <div class="info_gacha">
-            <!-- <div class="text1">
+            <div class="text1">
                 <h1>高知お土産ガチャとは？</h1>
             </div>
             <div class="text2">
                 <p>高知お土産ガチャは、軍資金とお酒の本数を入力するだけでランダムにお土産を選べるツールです。</p>
-            </div> -->
-			<form method="POST" action="{{ url_for('make_gift') }}">
-				<label for="budget">購入するギフト券の金額を入力してください</label>
-				<input type="number" id="gift_amount" name="gift_amount" min="1" required>
-				<br>
-				<input type="submit" value="決定">
-			</form>
+            </div>
         </div>
     </div>
 </body>
