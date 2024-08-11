@@ -422,6 +422,13 @@ input[type="number"] {
     }
 }
 
+@media (min-width: 1280px) {
+
+    .drawer_open {
+        display: none; /* 1280px以上でハンバーガーメニューを非表示にする */
+
+}
+
 @media (min-width: 768px) {
 
     h1 {
@@ -441,8 +448,6 @@ input[type="number"] {
         padding: 0 40px;
     }
 
-    .drawer_open {
-        display: none; /* 768px以上でハンバーガーメニューを非表示にする */
     }
 
     .nav_content {
